@@ -7,7 +7,7 @@ app.use(express.json());
 app.post('/generate', async (req, res) => {
   const { model, prompt } = req.body;
   try {
-    const response = await axios.post('http://localhost:11434/api/generate', {
+    const response = await axios.post('http://https://ollama-proxy-7m79.onrender.com:11434/api/generate', {
       model,
       prompt
     }, { responseType: 'stream' });

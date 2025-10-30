@@ -21,9 +21,10 @@ app.post('/generate', async (req, res) => {
     // إعادة تمرير الاستجابة مباشرة للعميل
     response.data.pipe(res);
   } catch (err) {
-    console.error('Error connecting to Ollama:', err.message);
-    res.status(500).json({ error: 'Failed to connect to Ollama service' });
-  }
+  console.error('Error connecting to Ollama:', err.response?.status, err.response?.data || err.message);
+  res.status(500).json({ error: 'Failed to connect to Ollama service', details: err.message });
+}
+
 });
 
 // تشغيل الخادم
